@@ -1,3 +1,7 @@
+const API_ROOT = process.env.NODE_ENV === 'production' ?
+  'http://printtoresist.org/api' :
+  'http://localhost:3000/api';
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -8,7 +12,7 @@ function checkStatus(response) {
 }
 
 export function submitForm(data) {
-  fetch('http://localhost:3000/poster', {
+  fetch(`${API_ROOT}/listing`, {
     method: 'POST',
     body: data
   })

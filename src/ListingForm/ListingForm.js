@@ -8,8 +8,8 @@ import './ListingForm.css';
 import { submitForm } from './ListingFormActions';
 
 const PAPER_SIZES = {
-  letter: 'letter',
-  tabloid: 'tabloid'
+  letter: 'Letter',
+  tabloid: 'Tabloid'
 };
 
 class ListingForm extends React.Component {
@@ -18,13 +18,21 @@ class ListingForm extends React.Component {
     this.state = {
       deadline: null,
       description: '',
-      instructions: '',
+      instruction:'',
       isColor: false,
       paperSize: PAPER_SIZES.letter,
       poster: null,
-      thumbnail: null,
-      testtest: null
+      title: ''
+      // thumbnail: null
     };
+  }
+
+  isValid = () => {
+    return (
+      !!this.state.description &&
+      !!this.state.poster &&
+      !!this.state.title
+    );
   }
 
   handleDateChange = (newDate) => {
@@ -45,7 +53,9 @@ class ListingForm extends React.Component {
       data.append(field, this.state[field]);
     })
 
-    submitForm(data);
+    if (this.isValid()) {
+      submitForm(data);
+    }
     event.preventDefault();
   }
 
@@ -61,7 +71,6 @@ class ListingForm extends React.Component {
     });
   }
 
-  // TODO: validate required fields
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -107,13 +116,13 @@ class ListingForm extends React.Component {
           onChange={this.handleInputChange}
           value={this.state.description}
         />
-        <label htmlFor="instructions">
-          Special instructions:
+        <label htmlFor="instruction">
+          Special instruction:
         </label>
         <textarea
-          name="instructions"
+          name="instruction"
           onChange={this.handleInputChange}
-          value={this.state.instructions}
+          value={this.state.instruction}
         />
         <div>
           <label>Deadline</label>
@@ -153,7 +162,7 @@ class ListingForm extends React.Component {
             <input
               type="radio"
               name="paperSize"
-              value="letter"
+              value={PAPER_SIZES.letter}
               checked={this.state.paperSize === PAPER_SIZES.letter}
               onChange={this.handleInputChange}
             />Letter
@@ -162,13 +171,13 @@ class ListingForm extends React.Component {
             <input
               type="radio"
               name="paperSize"
-              value="tabloid"
+              value={PAPER_SIZES.tabloid}
               checked={this.state.paperSize === PAPER_SIZES.tabloid}
               onChange={this.handleInputChange}
             />Tabloid (17 x 11)
           </label>
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" disabled={!this.isValid()} />
       </form>
     )
   }
