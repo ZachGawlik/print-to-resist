@@ -22,8 +22,8 @@ class ListingForm extends React.Component {
       isColor: false,
       paperSize: PAPER_SIZES.letter,
       poster: null,
-      title: ''
-      // thumbnail: null
+      title: '',
+      thumbnail: null
     };
   }
 
@@ -31,7 +31,8 @@ class ListingForm extends React.Component {
     return (
       !!this.state.description &&
       !!this.state.poster &&
-      !!this.state.title
+      !!this.state.title &&
+      !!this.state.thumbnail
     );
   }
 
@@ -82,7 +83,7 @@ class ListingForm extends React.Component {
             <img alt="thumbnail" src={this.state.thumbnail.preview} />
           }
           <Dropzone
-            accept="image/jpeg, image/png, application/pdf"
+            accept="image/jpeg, image/png"
             onDropAccepted={this.handleThumbnailChange}
           >
             Add your thumbnail
