@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './ListingForm.css';
-import { submitForm } from './ListingFormActions';
+import '../styles/ListingForm.css';
 
 const PAPER_SIZES = {
   letter: 'Letter',
@@ -25,6 +24,11 @@ class ListingForm extends React.Component {
       title: '',
       thumbnail: null
     };
+  }
+
+  static propTypes = {
+    postListing: PropTypes.func.isRequired,
+    status: PropTypes.string.isRequired,
   }
 
   isValid = () => {
@@ -55,7 +59,7 @@ class ListingForm extends React.Component {
     })
 
     if (this.isValid()) {
-      submitForm(data);
+      this.props.postListing(data);
     }
     event.preventDefault();
   }
@@ -75,6 +79,7 @@ class ListingForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.props.status}
         <label>
           Thumbnail:
         </label>

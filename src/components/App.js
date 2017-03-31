@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import logo from './print-to-resist-logo.svg';
-import './App.css';
-import ListingForm from './ListingForm/ListingForm';
+import { Route } from 'react-router';
+import logo from '../print-to-resist-logo.svg';
+import '../styles/App.css';
+import ListingFormContainer from '../containers/ListingFormContainer';
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
         <p className="App-intro">
           Updates coming shortly...
         </p>
-        <ListingForm />
+        <Route path="/create" component={ListingFormContainer} />
       </div>
     );
   }
