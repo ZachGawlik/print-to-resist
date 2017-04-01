@@ -1,7 +1,9 @@
-form {
-  text-align: left;
+.Listing-Form {
+  margin: 0 auto;
+  width: 600px;
 }
 
-label {
-  display: block;
+.Listing-Form__preview {
+  max-width: 200px;
+  max-height: 200px;
 }

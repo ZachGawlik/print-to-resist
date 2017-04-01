@@ -7,6 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers';
 import App from './components/App';
+import 'normalize.css';
 import './styles/index.css';
 
 const history = createHistory();

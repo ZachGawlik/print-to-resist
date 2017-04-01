@@ -11,6 +11,11 @@ const PAPER_SIZES = {
   tabloid: 'Tabloid'
 };
 
+const COLOR_OPTIONS = {
+  bw: 'bw',
+  color: 'color'
+};
+
 class ListingForm extends React.Component {
   constructor(props) {
     super(props);
@@ -76,61 +81,83 @@ class ListingForm extends React.Component {
     });
   }
 
+  handleColorInput = (event) => {
+    this.setState({
+      isColor: event.target.value === COLOR_OPTIONS.color
+    });
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.props.status}
-        <label>
-          Thumbnail:
-        </label>
-        <div>
-          {this.state.thumbnail &&
-            <img alt="thumbnail" src={this.state.thumbnail.preview} />
-          }
-          <Dropzone
-            accept="image/jpeg, image/png"
-            onDropAccepted={this.handleThumbnailChange}
-          >
-            Add your thumbnail
-          </Dropzone>
+      <form className="Listing-Form" onSubmit={this.handleSubmit}>
+        <div className="field">
+          <label htmlFor="thumbnail-input">
+            Thumbnail:
+          </label>
+          <div>
+            {this.state.thumbnail &&
+              <img
+                alt="thumbnail"
+                className="Listing-Form__preview"
+                src={this.state.thumbnail.preview}
+              />
+            }
+            <Dropzone
+              accept="image/jpeg, image/png"
+              inputProps={{id: 'thumbnail-input'}}
+              onDropAccepted={this.handleThumbnailChange}
+            >
+              Add your thumbnail
+            </Dropzone>
+          </div>
         </div>
-        <label htmlFor="title">
-          Title:
-        </label>
-        <input
-          name="title"
-          type="text"
-          onChange={this.handleInputChange}
-        />
-        <div>
-          <label>
+        <div className="field">
+          <label htmlFor="title-input">
+            Title:
+          </label>
+          <input
+            id="title-input"
+            name="title"
+            type="text"
+            onChange={this.handleInputChange}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="poster-input">
             Poster:
           </label>
+          {this.state.poster &&
+            this.state.poster.name}
           <Dropzone
             accept="image/jpeg, image/png, application/pdf"
             disablePreview={true}
+            inputProps={{id: 'poster-input'}}
             onDropAccepted={this.handlePosterChange}
           >
             Add your Poster.
           </Dropzone>
         </div>
-        <label htmlFor="description">
-          Description
-        </label>
-        <textarea
-          name="description"
-          onChange={this.handleInputChange}
-          value={this.state.description}
-        />
-        <label htmlFor="instruction">
-          Special instruction:
-        </label>
-        <textarea
-          name="instruction"
-          onChange={this.handleInputChange}
-          value={this.state.instruction}
-        />
-        <div>
+        <div className="field">
+          <label htmlFor="description">
+            Description
+          </label>
+          <textarea
+            name="description"
+            onChange={this.handleInputChange}
+            value={this.state.description}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="instruction">
+            Special instruction:
+          </label>
+          <textarea
+            name="instruction"
+            onChange={this.handleInputChange}
+            value={this.state.instruction}
+          />
+        </div>
+        <div className="field">
           <label>Deadline</label>
           <DatePicker
             isClearable={true}
@@ -141,29 +168,31 @@ class ListingForm extends React.Component {
             selected={this.state.deadline}
           />
         </div>
-        <div>
-          <h3>Print in:</h3>
+        <div className="field">
+          <p>Print in:</p>
           <label>
             <input
               type="radio"
               name="isColor"
-              value={false}
+              value={COLOR_OPTIONS.bw}
               checked={!this.state.isColor}
-              onChange={this.handleInputChange}
-            />Black and White
+              onChange={this.handleColorInput}
+            />
+            B/W
           </label>
           <label>
             <input
               type="radio"
               name="isColor"
-              value={true}
-              checked={this.state.isColor}
-              onChange={this.handleInputChange}
-            />Color
+              value={COLOR_OPTIONS.color}
+              checked={!!this.state.isColor}
+              onChange={this.handleColorInput}
+            />
+            <span className="colorful">Color</span>
           </label>
         </div>
-        <div>
-          <h3>Page size</h3>
+        <div className="field">
+          <p>Page size</p>
           <label>
             <input
               type="radio"

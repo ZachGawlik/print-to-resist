@@ -1,6 +1,43 @@
 body {
   margin: 0 auto;
-  padding: 0;
+  padding: 20px;
   font-family: sans-serif;
   max-width: 1000px;
+}
+
+.button_link {
+  color: blue;
+}
+
+.button_link:visited {
+  color: blue;
+}
+
+.colorful {
+  background: linear-gradient(to right, #d22, #dd2, #2d2, #2dd, #22d, #d2d, #d22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+input[type="text"] {
+  font-size: 16px;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+textarea {
+  font-size: 16px;
+  height: 75px;
+  width: 500px;
+}
+
+.field {
+  margin-bottom: 20px;
 }

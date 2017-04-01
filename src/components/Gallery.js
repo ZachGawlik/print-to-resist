@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import '../styles/Gallery.css';
 import ListingTile from './ListingTile';
+import '../styles/Gallery.css';
 
 export default class Gallery extends React.Component {
   static propTypes = {
@@ -14,10 +14,14 @@ export default class Gallery extends React.Component {
 
   render() {
     return (
-      <div className="Gallery">
-        {this.props.listings.map(listing => (
-          <ListingTile key={listing.listing_id} listing={listing} />
-        ))}
+      <div className="Gallery" id="gallery">
+        <h2>Spread the word!</h2>
+        <p>Select a page to post around your city</p>
+        <div className="Gallery__tiles">
+          {this.props.listings.map(listing => (
+            <ListingTile key={listing.listing_id} listing={listing} />
+          ))}
+        </div>
       </div>
     );
   }

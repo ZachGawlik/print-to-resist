@@ -7,6 +7,9 @@
 .ListingTile__thumbnail_container {
   width: 300px;
   height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ListingTile__thumbnail {

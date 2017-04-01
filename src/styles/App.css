@@ -1,11 +1,16 @@
-.App {
+.App__header {
   text-align: center;
+  margin-top: 2em;
 }
 
-.App-logo {
-  height: 80px;
+.App__title {
+  margin-bottom: 0;
 }
 
-.App-intro {
-  font-size: large;
+.App__subtitle {
+  margin-top: 0;
+}
+
+.App__logo {
+  height: 100px;
 }
