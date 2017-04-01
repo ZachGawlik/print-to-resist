@@ -1,4 +1,5 @@
 import { API_ROOT } from '../constants';
+import { checkStatus } from '../utils';
 
 export const POST_LISTING_REQUEST = 'POST_LISTING_REQUEST';
 export const POST_LISTING_SUCCESS = 'POST_LISTING_SUCCESS';
@@ -15,13 +16,6 @@ const postListingSuccess = () => ({
 const postListingFailure = () => ({
   type: POST_LISTING_FAILURE
 })
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-  throw new Error(response.statusText);
-}
 
 export function postListing(formData) {
   return (dispatch) => {

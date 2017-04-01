@@ -1,0 +1,24 @@
+.ListingTile {
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 1px 3px 1px #ddd, 0 0 0 1px #ddd;
+}
+
+.ListingTile__thumbnail_container {
+  width: 300px;
+  height: 300px;
+}
+
+.ListingTile__thumbnail {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.ListingTile__content {
+  text-align: left;
+  padding: 5px;
+}
+
+.ListingTile__title {
+  font-size: larger;
+}

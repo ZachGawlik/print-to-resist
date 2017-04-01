@@ -5,6 +5,8 @@ export const STATUS = {
   FAILURE: 'FAILURE'
 }
 
-export const API_ROOT = process.env.NODE_ENV === 'production' ?
-  'http://printtoresist.org/api' :
-  'http://localhost:3000/api';
+export const BASE_URL = process.env.NODE_ENV === 'production' ?
+  'http://printtoresist.org' :
+  'http://localhost:3000';
+
+export const API_ROOT = `${BASE_URL}/api`
