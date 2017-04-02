@@ -4,7 +4,9 @@ import Gallery from '../components/Gallery';
 import * as actionCreators from '../actions/galleryActions';
 
 const mapStateToProps = (state) => ({
-  listings: state.listings.results,
+  listings: state.listings.visibleListings.map(
+    listingId => state.listings.entities[listingId]
+  ),
   status: state.listings.status
 });
 

@@ -9,9 +9,9 @@ const getListingsRequest = () => ({
   type: GET_LISTINGS_REQUEST
 });
 
-const getListingsSuccess = (listings) => ({
+const getListingsSuccess = (payload) => ({
   type: GET_LISTINGS_SUCCESS,
-  listings
+  payload
 });
 
 const getListingsFailure = () => ({

@@ -1,14 +1,17 @@
+import { normalize } from 'normalizr';
 import {
   GET_LISTINGS_REQUEST,
   GET_LISTINGS_SUCCESS,
   GET_LISTINGS_FAILURE
 } from '../actions/galleryActions.js';
+import { listingsSchema } from '../schema';
 import { STATUS } from '../constants';
 import listingsStatus from './listingsStatus';
 
 const initialState = {
   status: STATUS.UNINITIALIZED,
-  results: []
+  entities: {},
+  visibleListings: []
 };
 
 function listings(state = initialState, action) {
@@ -20,9 +23,14 @@ function listings(state = initialState, action) {
         status: listingsStatus(state.status, action)
       };
     case GET_LISTINGS_SUCCESS:
+      const normalizedData = normalize(action.payload, listingsSchema);
       return {
         status: listingsStatus(state.status, action),
-        results: action.listings
+        entities: {
+          ...state.entities,
+          ...normalizedData.entities.listings
+        },
+        visibleListings: normalizedData.result
       };
     default:
       return state;

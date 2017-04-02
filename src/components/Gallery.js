@@ -5,7 +5,7 @@ import '../styles/Gallery.css';
 export default class Gallery extends React.Component {
   static propTypes = {
     getListings: PropTypes.func.isRequired,
-    listings: PropTypes.array.isRequired,
+    listings: PropTypes.array.isRequired
   };
 
   componentDidMount() {
@@ -13,12 +13,13 @@ export default class Gallery extends React.Component {
   }
 
   render() {
+    const { listings } = this.props;
     return (
       <div className="Gallery" id="gallery">
         <h2>Spread the word!</h2>
         <p>Select a page to post around your city</p>
         <div className="Gallery__tiles">
-          {this.props.listings.map(listing => (
+          {listings.map(listing => (
             <ListingTile key={listing.listingId} listing={listing} />
           ))}
         </div>
