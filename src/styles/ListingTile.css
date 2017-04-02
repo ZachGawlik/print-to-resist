@@ -18,10 +18,18 @@
 }
 
 .ListingTile__content {
+  display: flex;
+  justify-content: space-between;
   text-align: left;
   padding: 5px;
 }
 
 .ListingTile__title {
   font-size: larger;
+}
+
+.ListingTile__icon {
+  align-self: center;
+  width: 32px;
+  height: 32px;
 }
