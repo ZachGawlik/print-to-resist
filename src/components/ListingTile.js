@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { BASE_URL } from '../constants';
 import '../styles/ListingTile.css';
-import colorIcon from '../img/color-icon.png';
-import bwIcon from '../img/bw-icon.png';
+import ColorIcon from './ColorIcon';
 
 export default class ListingTile extends React.Component {
   static propTypes = {
@@ -23,20 +22,7 @@ export default class ListingTile extends React.Component {
           <p className="ListingTile__title">
             {listing.title}
           </p>
-          {listing.isColor ?
-            <img
-              className="ListingTile__icon"
-              title="This poster is to be printed in color"
-              alt="color icon"
-              src={colorIcon}
-            /> :
-            <img
-              className="ListingTile__icon"
-              title="This poster is to be printed in black and white"
-              alt="black and white icon"
-              src={bwIcon}
-            />
-          }
+          <ColorIcon isColor={listing.isColor} />
         </div>
       </div>
     );
