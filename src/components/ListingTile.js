@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { BASE_URL } from '../constants';
 import '../styles/ListingTile.css';
 import ColorIcon from './ColorIcon';
+import ListingThumbnail from './ListingThumbnail';
 
 export default class ListingTile extends React.Component {
   static propTypes = {
@@ -11,13 +11,10 @@ export default class ListingTile extends React.Component {
     const { listing } = this.props;
     return (
       <div className="ListingTile">
-        <div className="ListingTile__thumbnail_container">
-          <img
-            alt=""
-            className="ListingTile__thumbnail"
-            src={`${BASE_URL}/image/${listing.thumbnailId}`}
-          />
-        </div>
+        <ListingThumbnail
+          title={listing.title}
+          thumbnailId={listing.thumbnailId}
+        />
         <div className="ListingTile__content">
           <p className="ListingTile__title">
             {listing.title}

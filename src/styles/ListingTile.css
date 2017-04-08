@@ -4,19 +4,6 @@
   box-shadow: 0 1px 3px 1px #ddd, 0 0 0 1px #ddd;
 }
 
-.ListingTile__thumbnail_container {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ListingTile__thumbnail {
-  max-width: 300px;
-  max-height: 300px;
-}
-
 .ListingTile__content {
   display: flex;
   justify-content: space-between;

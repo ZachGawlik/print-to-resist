@@ -1,0 +1,12 @@
+.ListingThumbnail {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ListingThumbnail__image {
+  max-width: 300px;
+  max-height: 300px;
+}
