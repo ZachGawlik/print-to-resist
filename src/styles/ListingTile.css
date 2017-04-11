@@ -5,13 +5,16 @@
 }
 
 .ListingTile__content {
+  padding: 10px;
+}
+
+.ListingTile__headline {
   display: flex;
   justify-content: space-between;
-  text-align: left;
-  padding: 5px;
 }
 
 .ListingTile__title {
+  margin: 5px 0;
   font-size: larger;
 }
 
