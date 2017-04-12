@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
+import { WithContext as ReactTags } from 'react-tag-input'
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/ListingForm.css';
+import '../styles/ReactTags.css'
 
 const PAPER_SIZES = {
   letter: 'Letter',
@@ -26,6 +27,7 @@ class ListingForm extends React.Component {
       isColor: false,
       paperSize: PAPER_SIZES.letter,
       poster: null,
+      tags: [],
       title: '',
       thumbnail: null
     };
@@ -59,8 +61,14 @@ class ListingForm extends React.Component {
 
   handleSubmit = (event) => {
     const data = new FormData();
-    _.forEach(Object.keys(this.state), (field) => {
-      data.append(field, this.state[field]);
+    Object.keys(this.state).forEach((field) => {
+      if (field === 'tags') {
+        this.state.tags.forEach(tag => {
+          data.append(field, tag.id);
+        })
+      } else {
+        data.append(field, this.state[field]);
+      }
     })
 
     if (this.isValid()) {
@@ -84,6 +92,27 @@ class ListingForm extends React.Component {
   handleColorInput = (event) => {
     this.setState({
       isColor: event.target.value === COLOR_OPTIONS.color
+    });
+  }
+
+  handleTagAddition = (tag) => {
+    this.setState({
+      tags: [
+        ...this.state.tags,
+        {
+          id: tag,
+          text: tag
+        }
+      ]
+    });
+  }
+
+  handleTagDelete = (index) => {
+    this.setState({
+      tags: [
+        ...this.state.tags.slice(0, index),
+        ...this.state.tags.slice(index + 1)
+      ]
     });
   }
 
@@ -155,6 +184,22 @@ class ListingForm extends React.Component {
             name="instruction"
             onChange={this.handleInputChange}
             value={this.state.instruction}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="tags">
+            Tags
+          </label>
+          <ReactTags
+            autofocus={false}
+            classNames={{
+              tagInput: this.state.tags.length >= 3 ? 'display-none' : 'ReactTags__tagInput'
+            }}
+            handleAddition={this.handleTagAddition}
+            handleDelete={this.handleTagDelete}
+            minQueryLength={1}
+            name="tags"
+            tags={this.state.tags}
           />
         </div>
         <div className="field">

@@ -47,3 +47,7 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis
 }
+
+.display-none {
+  display: none
+}
