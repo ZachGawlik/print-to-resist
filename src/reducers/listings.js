@@ -1,10 +1,13 @@
 import { normalize } from 'normalizr';
 import {
+  GET_LISTING_SUCCESS
+} from '../actions/listingDetailActions';
+import {
   GET_LISTINGS_REQUEST,
   GET_LISTINGS_SUCCESS,
   GET_LISTINGS_FAILURE
-} from '../actions/galleryActions.js';
-import { listingsSchema } from '../schema';
+} from '../actions/galleryActions';
+import { listingSchema, listingsSchema } from '../schema';
 import { STATUS } from '../constants';
 import listingsStatus from './listingsStatus';
 
@@ -22,7 +25,17 @@ function listings(state = initialState, action) {
         ...state,
         status: listingsStatus(state.status, action)
       };
-    case GET_LISTINGS_SUCCESS:
+    case GET_LISTING_SUCCESS: {
+      const normalizedData = normalize(action.payload, listingSchema);
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          ...normalizedData.entities.listings
+        }
+      }
+    }
+    case GET_LISTINGS_SUCCESS: {
       const normalizedData = normalize(action.payload, listingsSchema);
       return {
         status: listingsStatus(state.status, action),
@@ -32,6 +45,7 @@ function listings(state = initialState, action) {
         },
         visibleListings: normalizedData.result
       };
+    }
     default:
       return state;
   }

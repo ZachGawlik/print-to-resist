@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import logo from '../print-to-resist-logo.svg';
 import '../styles/App.css';
+import ListingDetailContainer from '../containers/ListingDetailContainer';
 import ListingFormContainer from '../containers/ListingFormContainer';
 import Intro from './Intro';
 
@@ -22,6 +23,7 @@ class App extends Component {
         </div>
         <Route exact path="/" component={Intro} />
         <Route path="/create" component={ListingFormContainer} />
+        <Route path="/poster/:listingId" component={ListingDetailContainer} />
       </div>
     );
   }

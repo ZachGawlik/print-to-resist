@@ -18,7 +18,7 @@ const getListingsFailure = () => ({
   type: GET_LISTINGS_FAILURE
 })
 
-export function getListings(formData) {
+export function getListings() {
   return (dispatch) => {
     dispatch(getListingsRequest());
     return fetch(`${API_ROOT}/listing`)

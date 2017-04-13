@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import '../styles/ListingTile.css';
 import ColorIcon from './ColorIcon';
+import ListingLink from './ListingLink';
 import ListingThumbnail from './ListingThumbnail';
 
 export default class ListingTile extends React.Component {
@@ -14,15 +15,24 @@ export default class ListingTile extends React.Component {
         <div className="ListingTile__content">
           <div className="ListingTile__headline">
             <p className="ListingTile__title overflow-ellipsis">
-              {listing.title}
+              <ListingLink listingId={listing.listingId}>
+                {listing.title}
+              </ListingLink>
             </p>
             <ColorIcon isColor={listing.isColor} />
           </div>
+          <div>
+            {listing.tags.map(tag => (
+              <span className="ListingTile__tag" key={tag}>#{tag}</span>
+            ))}
+          </div>
         </div>
-        <ListingThumbnail
-          title={listing.title}
-          thumbnailId={listing.thumbnailId}
-        />
+        <ListingLink listingId={listing.listingId}>
+          <ListingThumbnail
+            title={listing.title}
+            thumbnailId={listing.thumbnailId}
+          />
+        </ListingLink>
       </div>
     );
   }

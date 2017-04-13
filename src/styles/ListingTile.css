@@ -23,3 +23,7 @@
   width: 32px;
   height: 32px;
 }
+
+.ListingTile__tag {
+  margin-right: .5em;
+}

@@ -1,0 +1,17 @@
+.ListingDetail__files {
+  margin: 5em 0;
+}
+
+.ListingDetail__files-header {
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .ListingDetail__info {
+    display: flex;
+  }
+
+  .ListingDetail__description {
+    margin-left: 20px;
+  }
+}

@@ -51,3 +51,8 @@ textarea {
 .display-none {
   display: none
 }
+
+.ListingLink {
+  color: black;
+  text-decoration: none;
+}
