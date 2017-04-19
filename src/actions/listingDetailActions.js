@@ -31,3 +31,23 @@ export function getListing(listingId) {
     });
   }
 }
+
+export function addPrinting(listingId, formData) {
+  return (dispatch) => {
+    return fetch(`${API_ROOT}/listing/${listingId}/printings`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(checkStatus)
+    .then(response => {
+      console.log('success');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+}

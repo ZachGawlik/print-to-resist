@@ -3,7 +3,13 @@ import ListingTile from './ListingTile';
 import { BASE_URL } from '../constants';
 import '../styles/ListingDetail.css';
 
-const ListingDetail = ({ listing }) => (
+const ListingDetail = ({
+  isPrintInputOpen,
+  listing,
+  onCopiesChange,
+  onPrintingSubmit,
+  openPrintInput
+}) => (
   <div className="ListingDetail">
     <div className="ListingDetail__info">
       <ListingTile listing={listing} />
@@ -48,12 +54,27 @@ const ListingDetail = ({ listing }) => (
           </p>
         </div>
       }
+      {isPrintInputOpen ?
+        <div>
+          <p>Let them know the word is being spread</p>
+          <label>
+            Copies:
+            <input type="number" min="1" max="200" onChange={onCopiesChange} />
+          </label>
+          <button onClick={onPrintingSubmit}>Submit</button>
+        </div> :
+        <button onClick={openPrintInput}>Done!</button>
+      }
     </div>
   </div>
 );
 
 ListingDetail.propTypes = {
+  isPrintInputOpen: PropTypes.bool,
   listing: PropTypes.object.isRequired,
+  onCopiesChange: PropTypes.func.isRequired,
+  onPrintingSubmit: PropTypes.func.isRequired,
+  openPrintInput: PropTypes.func.isRequired
 };
 
 export default ListingDetail
