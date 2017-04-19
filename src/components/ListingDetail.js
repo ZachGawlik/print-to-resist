@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ExternalLink from './ExternalLink';
 import ListingTile from './ListingTile';
 import { BASE_URL } from '../constants';
 import '../styles/ListingDetail.css';
@@ -16,6 +17,11 @@ const ListingDetail = ({
       <div className="ListingDetail__description">
         <h3>Description:</h3>
         <p>{listing.description}</p>
+        {listing.links && listing.links.map(link =>
+          <p key={link}>
+            <ExternalLink url={link} />
+          </p>
+        )}
       </div>
     </div>
     <div className="ListingDetail__files">

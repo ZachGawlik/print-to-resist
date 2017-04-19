@@ -3,6 +3,7 @@ import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
 import { WithContext as ReactTags } from 'react-tag-input'
+import LinkInput from './LinkInput';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/ListingForm.css';
 import '../styles/ReactTags.css'
@@ -25,6 +26,7 @@ class ListingForm extends React.Component {
       description: '',
       instruction:'',
       isColor: false,
+      links: [],
       paperSize: PAPER_SIZES.letter,
       poster: null,
       tags: [],
@@ -66,6 +68,10 @@ class ListingForm extends React.Component {
         this.state.tags.forEach(tag => {
           data.append(field, tag.id);
         })
+      } else if (field === 'links') {
+        this.state.links.forEach(link => {
+          data.append(field, link)
+        });
       } else {
         data.append(field, this.state[field]);
       }
@@ -112,6 +118,34 @@ class ListingForm extends React.Component {
       tags: [
         ...this.state.tags.slice(0, index),
         ...this.state.tags.slice(index + 1)
+      ]
+    });
+  }
+
+  handleAddLink = () => {
+    this.setState({
+      links: [
+        ...this.state.links,
+        ''
+      ]
+    });
+  }
+
+  handleUrlChange = (index, url) => {
+    this.setState({
+      links: [
+        ...this.state.links.slice(0, index),
+        url,
+        ...this.state.links.slice(index + 1)
+      ]
+    });
+  }
+
+  handleDeleteLink = (index) => {
+    this.setState({
+      links: [
+        ...this.state.links.slice(0, index),
+        ...this.state.links.slice(index + 1)
       ]
     });
   }
@@ -201,6 +235,23 @@ class ListingForm extends React.Component {
             name="tags"
             tags={this.state.tags}
           />
+        </div>
+        <div className="field">
+          <label>
+            Links
+          </label>
+          {this.state.links.map((link, index) =>
+            <LinkInput
+              key={index}
+              index={index}
+              onDeleteLink={this.handleDeleteLink}
+              onUrlChange={this.handleUrlChange}
+              url={link}
+            />
+          )}
+          <button onClick={this.handleAddLink} type="button">
+            +
+          </button>
         </div>
         <div className="field">
           <label>Deadline</label>
