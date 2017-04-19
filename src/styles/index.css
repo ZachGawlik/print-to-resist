@@ -19,8 +19,12 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-input[type="text"] {
+input {
   font-size: 16px;
+}
+
+input[type="radio"] {
+  margin-right: .5em;
 }
 
 form {

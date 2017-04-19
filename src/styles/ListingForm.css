@@ -1,9 +1,13 @@
-.Listing-Form {
+.ListingForm {
   margin: 0 auto;
   width: 600px;
 }
 
-.Listing-Form__preview {
+.ListingForm__preview {
   max-width: 200px;
   max-height: 200px;
+}
+
+.ListingForm__add-link {
+  font-size: 16px;
 }

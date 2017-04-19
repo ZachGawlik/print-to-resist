@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import '../styles/LinkInput.css';
 
 export default class LinkInput extends React.Component {
   static propTypes = {
@@ -18,13 +19,17 @@ export default class LinkInput extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="LinkInput">
         <input
           type="url"
           onChange={this.handleUrlChange}
           value={this.props.url}
         />
-        <button type="button" onClick={this.handleDeleteClick}>
+        <button
+          className="LinkInput__remove"
+          type="button"
+          onClick={this.handleDeleteClick}
+        >
           -
         </button>
       </div>

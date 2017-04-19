@@ -152,7 +152,7 @@ class ListingForm extends React.Component {
 
   render() {
     return (
-      <form className="Listing-Form" onSubmit={this.handleSubmit}>
+      <form className="ListingForm" onSubmit={this.handleSubmit}>
         <div className="field">
           <label htmlFor="thumbnail-input">
             Thumbnail:
@@ -161,7 +161,7 @@ class ListingForm extends React.Component {
             {this.state.thumbnail &&
               <img
                 alt="thumbnail"
-                className="Listing-Form__preview"
+                className="ListingForm__preview"
                 src={this.state.thumbnail.preview}
               />
             }
@@ -249,7 +249,11 @@ class ListingForm extends React.Component {
               url={link}
             />
           )}
-          <button onClick={this.handleAddLink} type="button">
+          <button
+            className="ListingForm__add-link"
+            onClick={this.handleAddLink}
+            type="button"
+          >
             +
           </button>
         </div>
