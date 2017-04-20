@@ -2,78 +2,55 @@ import React, { PropTypes } from 'react';
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { WithContext as ReactTags } from 'react-tag-input'
 import LinkInput from './LinkInput';
-import 'react-datepicker/dist/react-datepicker.css';
-import '../styles/ListingForm.css';
+import {
+  COLOR_OPTIONS,
+  PAPER_SIZES
+} from '../constants';
 import '../styles/ReactTags.css'
 
-const PAPER_SIZES = {
-  letter: 'Letter',
-  tabloid: 'Tabloid'
-};
-
-const COLOR_OPTIONS = {
-  bw: 'bw',
-  color: 'color'
-};
-
 class ListingForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deadline: null,
-      description: '',
-      instruction:'',
-      isColor: false,
-      links: [],
-      paperSize: PAPER_SIZES.letter,
-      poster: null,
-      tags: [],
-      title: '',
-      thumbnail: null
-    };
-  }
-
   static propTypes = {
-    postListing: PropTypes.func.isRequired,
-    status: PropTypes.string.isRequired,
+    handleAddLink: PropTypes.func.isRequired,
+    handleColorInput: PropTypes.func.isRequired,
+    handleDateChange: PropTypes.func.isRequired,
+    handleDeleteLink: PropTypes.func.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handlePosterChange: PropTypes.func.isRequired,
+    handleTagAddition: PropTypes.func.isRequired,
+    handleTagDelete: PropTypes.func.isRequired,
+    handleThumbnailChange: PropTypes.func.isRequired,
+    handleUrlChange: PropTypes.func.isRequired,
+    listing: PropTypes.object.isRequired,
+    postListing: PropTypes.func.isRequired
   }
 
   isValid = () => {
+    const { listing } = this.props;
     return (
-      !!this.state.description &&
-      !!this.state.poster &&
-      !!this.state.title &&
-      !!this.state.thumbnail
+      !!listing.description &&
+      !!listing.poster &&
+      !!listing.title &&
+      !!listing.thumbnail
     );
   }
 
-  handleDateChange = (newDate) => {
-    this.setState({
-      deadline: newDate
-    });
-  }
-
-  handleInputChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
   handleSubmit = (event) => {
+    const { listing } = this.props;
     const data = new FormData();
-    Object.keys(this.state).forEach((field) => {
+    Object.keys(listing).forEach((field) => {
       if (field === 'tags') {
-        this.state.tags.forEach(tag => {
+        listing.tags.forEach(tag => {
           data.append(field, tag.id);
         })
       } else if (field === 'links') {
-        this.state.links.forEach(link => {
+        listing.links.forEach(link => {
           data.append(field, link)
         });
       } else {
-        data.append(field, this.state[field]);
+        data.append(field, listing[field]);
       }
     })
 
@@ -83,92 +60,26 @@ class ListingForm extends React.Component {
     event.preventDefault();
   }
 
-  handleThumbnailChange = (acceptedFiles) => {
-    this.setState({
-      thumbnail: acceptedFiles[0]
-    });
-  }
-
-  handlePosterChange = (acceptedFiles) => {
-    this.setState({
-      poster: acceptedFiles[0]
-    });
-  }
-
-  handleColorInput = (event) => {
-    this.setState({
-      isColor: event.target.value === COLOR_OPTIONS.color
-    });
-  }
-
-  handleTagAddition = (tag) => {
-    this.setState({
-      tags: [
-        ...this.state.tags,
-        {
-          id: tag,
-          text: tag
-        }
-      ]
-    });
-  }
-
-  handleTagDelete = (index) => {
-    this.setState({
-      tags: [
-        ...this.state.tags.slice(0, index),
-        ...this.state.tags.slice(index + 1)
-      ]
-    });
-  }
-
-  handleAddLink = () => {
-    this.setState({
-      links: [
-        ...this.state.links,
-        ''
-      ]
-    });
-  }
-
-  handleUrlChange = (index, url) => {
-    this.setState({
-      links: [
-        ...this.state.links.slice(0, index),
-        url,
-        ...this.state.links.slice(index + 1)
-      ]
-    });
-  }
-
-  handleDeleteLink = (index) => {
-    this.setState({
-      links: [
-        ...this.state.links.slice(0, index),
-        ...this.state.links.slice(index + 1)
-      ]
-    });
-  }
-
   render() {
+    const { listing } = this.props;
     return (
-      <form className="ListingForm" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div className="field">
           <label htmlFor="thumbnail-input">
             Thumbnail:
           </label>
           <div>
-            {this.state.thumbnail &&
+            {listing.thumbnail &&
               <img
                 alt="thumbnail"
                 className="ListingForm__preview"
-                src={this.state.thumbnail.preview}
+                src={listing.thumbnail.preview}
               />
             }
             <Dropzone
               accept="image/jpeg, image/png"
               inputProps={{id: 'thumbnail-input'}}
-              onDropAccepted={this.handleThumbnailChange}
+              onDropAccepted={this.props.handleThumbnailChange}
             >
               Add your thumbnail
             </Dropzone>
@@ -182,20 +93,20 @@ class ListingForm extends React.Component {
             id="title-input"
             name="title"
             type="text"
-            onChange={this.handleInputChange}
+            onChange={this.props.handleInputChange}
           />
         </div>
         <div className="field">
           <label htmlFor="poster-input">
             Poster:
           </label>
-          {this.state.poster &&
-            this.state.poster.name}
+          {listing.poster &&
+            listing.poster.name}
           <Dropzone
             accept="image/jpeg, image/png, application/pdf"
             disablePreview={true}
             inputProps={{id: 'poster-input'}}
-            onDropAccepted={this.handlePosterChange}
+            onDropAccepted={this.props.handlePosterChange}
           >
             Add your Poster.
           </Dropzone>
@@ -206,8 +117,8 @@ class ListingForm extends React.Component {
           </label>
           <textarea
             name="description"
-            onChange={this.handleInputChange}
-            value={this.state.description}
+            onChange={this.props.handleInputChange}
+            value={listing.description}
           />
         </div>
         <div className="field">
@@ -216,8 +127,8 @@ class ListingForm extends React.Component {
           </label>
           <textarea
             name="instruction"
-            onChange={this.handleInputChange}
-            value={this.state.instruction}
+            onChange={this.props.handleInputChange}
+            value={listing.instruction}
           />
         </div>
         <div className="field">
@@ -227,31 +138,31 @@ class ListingForm extends React.Component {
           <ReactTags
             autofocus={false}
             classNames={{
-              tagInput: this.state.tags.length >= 3 ? 'display-none' : 'ReactTags__tagInput'
+              tagInput: listing.tags.length >= 3 ? 'display-none' : 'ReactTags__tagInput'
             }}
-            handleAddition={this.handleTagAddition}
-            handleDelete={this.handleTagDelete}
+            handleAddition={this.props.handleTagAddition}
+            handleDelete={this.props.handleTagDelete}
             minQueryLength={1}
             name="tags"
-            tags={this.state.tags}
+            tags={listing.tags}
           />
         </div>
         <div className="field">
           <label>
             Links
           </label>
-          {this.state.links.map((link, index) =>
+          {listing.links.map((link, index) =>
             <LinkInput
               key={index}
               index={index}
-              onDeleteLink={this.handleDeleteLink}
-              onUrlChange={this.handleUrlChange}
+              onDeleteLink={this.props.handleDeleteLink}
+              onUrlChange={this.props.handleUrlChange}
               url={link}
             />
           )}
           <button
             className="ListingForm__add-link"
-            onClick={this.handleAddLink}
+            onClick={this.props.handleAddLink}
             type="button"
           >
             +
@@ -263,9 +174,9 @@ class ListingForm extends React.Component {
             isClearable={true}
             minDate={moment()}
             maxDate={moment().add(1, "year")}
-            onChange={this.handleDateChange}
+            onChange={this.props.handleDateChange}
             placeholderText="deadline"
-            selected={this.state.deadline}
+            selected={listing.deadline}
           />
         </div>
         <div className="field">
@@ -275,8 +186,8 @@ class ListingForm extends React.Component {
               type="radio"
               name="isColor"
               value={COLOR_OPTIONS.bw}
-              checked={!this.state.isColor}
-              onChange={this.handleColorInput}
+              checked={!listing.isColor}
+              onChange={this.props.handleColorInput}
             />
             B/W
           </label>
@@ -285,8 +196,8 @@ class ListingForm extends React.Component {
               type="radio"
               name="isColor"
               value={COLOR_OPTIONS.color}
-              checked={!!this.state.isColor}
-              onChange={this.handleColorInput}
+              checked={!!listing.isColor}
+              onChange={this.props.handleColorInput}
             />
             <span className="colorful">Color</span>
           </label>
@@ -298,8 +209,8 @@ class ListingForm extends React.Component {
               type="radio"
               name="paperSize"
               value={PAPER_SIZES.letter}
-              checked={this.state.paperSize === PAPER_SIZES.letter}
-              onChange={this.handleInputChange}
+              checked={listing.paperSize === PAPER_SIZES.letter}
+              onChange={this.props.handleInputChange}
             />Letter
           </label>
           <label>
@@ -307,14 +218,14 @@ class ListingForm extends React.Component {
               type="radio"
               name="paperSize"
               value={PAPER_SIZES.tabloid}
-              checked={this.state.paperSize === PAPER_SIZES.tabloid}
-              onChange={this.handleInputChange}
+              checked={listing.paperSize === PAPER_SIZES.tabloid}
+              onChange={this.props.handleInputChange}
             />Tabloid (17 x 11)
           </label>
         </div>
         <input type="submit" value="Submit" disabled={!this.isValid()} />
       </form>
-    )
+    );
   }
 }
 

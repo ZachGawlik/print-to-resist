@@ -10,3 +10,13 @@ export const BASE_URL = process.env.NODE_ENV === 'production' ?
   'http://localhost:3000';
 
 export const API_ROOT = `${BASE_URL}/api`
+
+export const PAPER_SIZES = {
+  letter: 'Letter',
+  tabloid: 'Tabloid'
+};
+
+export const COLOR_OPTIONS = {
+  bw: 'bw',
+  color: 'color'
+};
