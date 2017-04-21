@@ -1,6 +1,6 @@
 .ListingForm {
   margin: 0 auto;
-  width: 600px;
+  max-width: 600px;
 }
 
 .ListingForm__preview {
@@ -8,6 +8,32 @@
   max-height: 200px;
 }
 
-.ListingForm__add-link {
-  font-size: 16px;
+.ListingForm__field {
+  margin-bottom: 2em;
+}
+
+.ListingForm__field-label {
+  margin-bottom: .25em;
+  display: block;
+  font-weight: bold;
+}
+
+.ListingForm__radio-label {
+  display: block;
+  font-weight: normal
+}
+
+.ListingForm__input-info {
+  margin-left: .5em;
+  color: grey;
+  font-weight: normal;
+}
+
+.ListingForm__dropzone {
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 5px;
+  padding: 1em;
+  cursor: pointer;
 }

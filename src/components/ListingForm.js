@@ -64,9 +64,13 @@ class ListingForm extends React.Component {
     const { listing } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label htmlFor="thumbnail-input">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="thumbnail-input"
+          >
             Thumbnail:
+            <span className="ListingForm__input-info">(must be less than 10MB)</span>
           </label>
           <div>
             {listing.thumbnail &&
@@ -78,15 +82,20 @@ class ListingForm extends React.Component {
             }
             <Dropzone
               accept="image/jpeg, image/png"
+              className="ListingForm__dropzone"
               inputProps={{id: 'thumbnail-input'}}
+              multiple={false}
               onDropAccepted={this.props.handleThumbnailChange}
             >
               Add your thumbnail
             </Dropzone>
           </div>
         </div>
-        <div className="field">
-          <label htmlFor="title-input">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="title-input"
+          >
             Title:
           </label>
           <input
@@ -96,23 +105,32 @@ class ListingForm extends React.Component {
             onChange={this.props.handleInputChange}
           />
         </div>
-        <div className="field">
-          <label htmlFor="poster-input">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="poster-input"
+          >
             Poster:
+            <span className="ListingForm__input-info">(must be less than 10MB)</span>
           </label>
           {listing.poster &&
             listing.poster.name}
           <Dropzone
             accept="image/jpeg, image/png, application/pdf"
+            className="ListingForm__dropzone"
             disablePreview={true}
             inputProps={{id: 'poster-input'}}
+            multiple={false}
             onDropAccepted={this.props.handlePosterChange}
           >
-            Add your Poster.
+            Add your poster
           </Dropzone>
         </div>
-        <div className="field">
-          <label htmlFor="description">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="description"
+          >
             Description
           </label>
           <textarea
@@ -122,9 +140,13 @@ class ListingForm extends React.Component {
             value={listing.description}
           />
         </div>
-        <div className="field">
-          <label htmlFor="instruction">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="instruction"
+          >
             Special instruction:
+            <span className="ListingForm__input-info">Where/how should this be spread?</span>
           </label>
           <textarea
             id="instruction"
@@ -133,9 +155,13 @@ class ListingForm extends React.Component {
             value={listing.instruction}
           />
         </div>
-        <div className="field">
-          <label htmlFor="tags">
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="tags"
+          >
             Tags
+            <span className="ListingForm__input-info">(up to 3)</span>
           </label>
           <ReactTags
             autofocus={false}
@@ -150,8 +176,8 @@ class ListingForm extends React.Component {
             tags={listing.tags}
           />
         </div>
-        <div className="field">
-          <label>
+        <div className="ListingForm__field">
+          <label className="ListingForm__field-label">
             Links
           </label>
           {listing.links.map((link, index) =>
@@ -164,28 +190,31 @@ class ListingForm extends React.Component {
             />
           )}
           <button
-            className="ListingForm__add-link"
             onClick={this.props.handleAddLink}
             type="button"
           >
-            +
+            Add +
           </button>
         </div>
-        <div className="field">
-          <label htmlFor="deadline">Deadline</label>
+        <div className="ListingForm__field">
+          <label
+            className="ListingForm__field-label"
+            htmlFor="deadline"
+          >
+            Deadline
+          </label>
           <DatePicker
-            id="deadline"
             isClearable={true}
             minDate={moment()}
             maxDate={moment().add(1, "year")}
             onChange={this.props.handleDateChange}
-            placeholderText="deadline"
+            placeholderText="No deadline selected"
             selected={listing.deadline}
           />
         </div>
-        <div className="field">
-          <p>Print in:</p>
-          <label>
+        <div className="ListingForm__field">
+          <p className="ListingForm__field-label">Print in:</p>
+          <label className="ListingForm__radio-label">
             <input
               type="radio"
               name="isColor"
@@ -195,7 +224,7 @@ class ListingForm extends React.Component {
             />
             B/W
           </label>
-          <label>
+          <label className="ListingForm__radio-label">
             <input
               type="radio"
               name="isColor"
@@ -206,9 +235,9 @@ class ListingForm extends React.Component {
             <span className="colorful">Color</span>
           </label>
         </div>
-        <div className="field">
-          <p>Page size</p>
-          <label>
+        <div className="ListingForm__field">
+          <p className="ListingForm__field-label">Page size</p>
+          <label className="ListingForm__radio-label">
             <input
               type="radio"
               name="paperSize"
@@ -217,7 +246,7 @@ class ListingForm extends React.Component {
               onChange={this.props.handleInputChange}
             />Letter
           </label>
-          <label>
+          <label className="ListingForm__radio-label">
             <input
               type="radio"
               name="paperSize"
