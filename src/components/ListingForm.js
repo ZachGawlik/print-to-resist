@@ -3,7 +3,7 @@ import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { WithContext as ReactTags } from 'react-tag-input'
+import { WithContext as ReactTags } from 'react-tag-input';
 import LinkInput from './LinkInput';
 import {
   COLOR_OPTIONS,
@@ -116,6 +116,7 @@ class ListingForm extends React.Component {
             Description
           </label>
           <textarea
+            id="description"
             name="description"
             onChange={this.props.handleInputChange}
             value={listing.description}
@@ -126,6 +127,7 @@ class ListingForm extends React.Component {
             Special instruction:
           </label>
           <textarea
+            id="instruction"
             name="instruction"
             onChange={this.props.handleInputChange}
             value={listing.instruction}
@@ -142,6 +144,7 @@ class ListingForm extends React.Component {
             }}
             handleAddition={this.props.handleTagAddition}
             handleDelete={this.props.handleTagDelete}
+            id="tags"
             minQueryLength={1}
             name="tags"
             tags={listing.tags}
@@ -169,8 +172,9 @@ class ListingForm extends React.Component {
           </button>
         </div>
         <div className="field">
-          <label>Deadline</label>
+          <label htmlFor="deadline">Deadline</label>
           <DatePicker
+            id="deadline"
             isClearable={true}
             minDate={moment()}
             maxDate={moment().add(1, "year")}
