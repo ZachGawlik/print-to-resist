@@ -32,6 +32,7 @@ class ListingDetailContainer extends React.Component {
 
   handlePrinting = () => {
     const { copies } = this.state;
+    this.setState({ isPrintInputOpen: false });
     this.props.addPrinting(
       this.props.listing.listingId,
       { copies }
