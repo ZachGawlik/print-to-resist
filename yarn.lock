@@ -4361,9 +4361,9 @@ react-scripts@0.9.5:
   optionalDependencies:
     fsevents "1.0.17"
 
-react-tag-input@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/react-tag-input/-/react-tag-input-4.6.2.tgz#27f5b6366385faa7798b7593de018c9e9ef033de"
+react-tag-input@4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/react-tag-input/-/react-tag-input-4.6.3.tgz#be60dcf3e5b3042a53beca8f64a07b8dbb2cadd2"
   dependencies:
     lodash "^4.14.1"
     react-dnd "^2.0.2"

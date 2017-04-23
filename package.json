@@ -13,7 +13,7 @@
     "react-redux": "^5.0.3",
     "react-router-dom": "^4.0.0",
     "react-router-redux": "next",
-    "react-tag-input": "^4.6.2",
+    "react-tag-input": "4.6.3",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
