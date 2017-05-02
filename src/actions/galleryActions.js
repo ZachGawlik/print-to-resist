@@ -21,7 +21,7 @@ const getListingsFailure = () => ({
 export function getListings() {
   return (dispatch) => {
     dispatch(getListingsRequest());
-    return fetch(`${API_ROOT}/listing`)
+    return fetch(`${API_ROOT}/listings`)
     .then(checkStatus)
     .then(data => {
       dispatch(getListingsSuccess(data));

@@ -21,7 +21,7 @@ const getListingFailure = () => ({
 export function getListing(listingId) {
   return (dispatch) => {
     dispatch(getListingRequest());
-    return fetch(`${API_ROOT}/listing/${listingId}`)
+    return fetch(`${API_ROOT}/listings/${listingId}`)
     .then(checkStatus)
     .then(data => {
       dispatch(getListingSuccess(data));
@@ -34,7 +34,7 @@ export function getListing(listingId) {
 
 export function addPrinting(listingId, formData) {
   return (dispatch) => {
-    return fetch(`${API_ROOT}/listing/${listingId}/printings`, {
+    return fetch(`${API_ROOT}/listings/${listingId}/printings`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

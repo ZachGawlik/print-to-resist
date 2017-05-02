@@ -20,7 +20,7 @@ const postListingFailure = () => ({
 export function postListing(formData) {
   return (dispatch) => {
     dispatch(postListingRequest());
-    return fetch(`${API_ROOT}/listing`, {
+    return fetch(`${API_ROOT}/listings`, {
       method: 'POST',
       body: formData
     })
