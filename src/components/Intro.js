@@ -7,10 +7,10 @@ const Intro = () => (
   <div className="Intro">
     <div className="Intro__information">
       <p>
-        Print to Resist helps activist organizations and concerned citizens get key information spread. The service aims to break the internet bubble to instruct everyone of their rights, inform about current events, and promote effective methods of resistance.
+        Are you a college student? Use your printing allowance to promote social change!
       </p>
       <p>
-        Are you a college student? Use up your semester printing allowance to promote social change!
+        Print to Resist helps activist organizations and concerned citizens spread key information related to the anti-Trump movement. This site aims to break the internet bubble to help unite the wide movement, to help instruct people of their rights, and to help promote effective methods of resistance.
       </p>
       <p>
         Want to help? <a className="button_link" href="#gallery">Print and post</a> or <Link className="button_link" to="/create">Add a poster worth spreading</Link>

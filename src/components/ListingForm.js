@@ -64,13 +64,18 @@ class ListingForm extends React.Component {
     const { listing } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
+        <h2>Submit a poster worth spreading</h2>
+        <p className="ListingForm__disclaimer">
+          The submission will be reviewed to ensure the poster is accurate and relevant.
+          If the poster pertains to a specific event, the organizer will be contacted to ensure that they agree to having the event be spread in this way.
+        </p>
         <div className="ListingForm__field">
           <label
             className="ListingForm__field-label"
             htmlFor="thumbnail-input"
           >
             Thumbnail:
-            <span className="ListingForm__input-info">(must be less than 10MB)</span>
+            <span className="ListingForm__input-info">(preferably 300x300)</span>
           </label>
           <div>
             {listing.thumbnail &&
@@ -202,6 +207,7 @@ class ListingForm extends React.Component {
             htmlFor="deadline"
           >
             Deadline
+            <span className="ListingForm__input-info">(if applicable)</span>
           </label>
           <DatePicker
             isClearable={true}

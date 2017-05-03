@@ -23,6 +23,11 @@
   font-weight: normal
 }
 
+.ListingForm__disclaimer {
+  color: grey;
+  margin-bottom: 2em;
+}
+
 .ListingForm__input-info {
   margin-left: .5em;
   color: grey;
