@@ -13,7 +13,9 @@ const ListingDetail = ({
 }) => (
   <div className="ListingDetail">
     <div className="ListingDetail__info">
-      <ListingTile listing={listing} />
+      <div className="ListingDetail__tile">
+        <ListingTile listing={listing} />
+      </div>
       <div className="ListingDetail__description">
         <h3>Description:</h3>
         <p>{listing.description}</p>

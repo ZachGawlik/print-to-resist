@@ -1,3 +1,7 @@
+.ListingDetail__tile {
+  width: 300px;
+}
+
 .ListingDetail__files {
   margin: 5em 0;
 }

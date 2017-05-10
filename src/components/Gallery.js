@@ -18,9 +18,11 @@ export default class Gallery extends React.Component {
       <div className="Gallery" id="gallery">
         <h2>Spread the word!</h2>
         <p>Select a page to post around your city</p>
-        <div className="Gallery__tiles">
+        <div>
           {listings.map(listing => (
-            <ListingTile key={listing.listingId} listing={listing} />
+            <div className="Gallery__tile">
+              <ListingTile key={listing.listingId} listing={listing} />
+            </div>
           ))}
         </div>
       </div>

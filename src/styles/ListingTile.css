@@ -1,6 +1,9 @@
 .ListingTile {
-  width: 300px;
-  margin: 10px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.ListingTile__card {
   box-shadow: 0 1px 3px 1px #ddd, 0 0 0 1px #ddd;
 }
 
@@ -26,4 +29,9 @@
 
 .ListingTile__tag {
   margin-right: .5em;
+}
+
+.ListingTile__tag--placeholder {
+  color: grey;
+  font-style: italic;
 }
