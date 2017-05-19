@@ -16,8 +16,8 @@ class Gallery extends React.Component {
         <p>Select a page to post around your city</p>
         <div>
           {listings.map(listing => (
-            <div className="Gallery__tile">
-              <ListingTile key={listing.listingId} listing={listing} />
+            <div className="Gallery__tile" key={listing.listingId}>
+              <ListingTile listing={listing} />
             </div>
           ))}
         </div>
