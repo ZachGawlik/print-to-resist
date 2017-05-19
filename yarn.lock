@@ -4264,13 +4264,14 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-datepicker@^0.43.0:
-  version "0.43.0"
-  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-0.43.0.tgz#a648ab9df13eb2daa2fbcc150c8cdf983f09a31c"
+react-datepicker@^0.46.0:
+  version "0.46.0"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-0.46.0.tgz#dd0c58efde9931964a248854e073151374fc937f"
   dependencies:
     classnames "^2.2.5"
     moment "^2.17.1"
-    react-onclickoutside "^5.9.0"
+    prop-types "^15.5.8"
+    react-onclickoutside "^5.11.1"
     tether "^1.4.0"
 
 react-dev-utils@^0.5.2:
@@ -4321,7 +4322,7 @@ react-dropzone@^3.12.2:
     attr-accept "^1.0.3"
     prop-types "^15.5.7"
 
-react-onclickoutside@^5.9.0:
+react-onclickoutside@^5.11.1:
   version "5.11.1"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-5.11.1.tgz#00314e52567cf55faba94cabbacd119619070623"
   dependencies:
