@@ -1,17 +1,11 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/listingDetailActions';
 import ListingDetail from '../components/ListingDetail';
 
 class ListingDetailContainer extends React.Component {
-  static propTypes = {
-    addPrinting: PropTypes.func.isRequired,
-    getListing: PropTypes.func.isRequired,
-    listing: PropTypes.object,
-    match: PropTypes.object.isRequired,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -56,6 +50,13 @@ class ListingDetailContainer extends React.Component {
     );
   }
 }
+
+ListingDetailContainer.propTypes = {
+  addPrinting: PropTypes.func.isRequired,
+  getListing: PropTypes.func.isRequired,
+  listing: PropTypes.object,
+  match: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => ({
   listing: state.listings.entities[ownProps.match.params.listingId] || null,

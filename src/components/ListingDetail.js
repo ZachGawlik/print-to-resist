@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ExternalLink from './ExternalLink';
 import ListingTile from './ListingTile';
 import { BASE_URL } from '../constants';

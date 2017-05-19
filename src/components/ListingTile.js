@@ -1,13 +1,11 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import '../styles/ListingTile.css';
 import ColorIcon from './ColorIcon';
 import ListingLink from './ListingLink';
 import ListingThumbnail from './ListingThumbnail';
 
-export default class ListingTile extends React.Component {
-  static propTypes = {
-    listing: PropTypes.object.isRequired
-  };
+class ListingTile extends React.Component {
   render() {
     const { listing } = this.props;
     return (
@@ -42,3 +40,9 @@ export default class ListingTile extends React.Component {
     );
   }
 }
+
+ListingTile.propTypes = {
+  listing: PropTypes.object.isRequired
+};
+
+export default ListingTile;

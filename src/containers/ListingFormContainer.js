@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Alert from '../components/Alert';
@@ -12,11 +13,6 @@ import {
 import '../styles/ListingForm.css';
 
 class ListingFormContainer extends React.Component {
-  static propTypes = {
-    postListing: PropTypes.func.isRequired,
-    status: PropTypes.string.isRequired,
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -150,6 +146,11 @@ class ListingFormContainer extends React.Component {
     );
   }
 }
+
+ListingFormContainer.propTypes = {
+  postListing: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state) => ({
   status: state.listingFormStatus

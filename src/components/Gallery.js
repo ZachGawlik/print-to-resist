@@ -1,13 +1,9 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ListingTile from './ListingTile';
 import '../styles/Gallery.css';
 
-export default class Gallery extends React.Component {
-  static propTypes = {
-    getListings: PropTypes.func.isRequired,
-    listings: PropTypes.array.isRequired
-  };
-
+class Gallery extends React.Component {
   componentDidMount() {
     this.props.getListings();
   }
@@ -29,3 +25,10 @@ export default class Gallery extends React.Component {
     );
   }
 }
+
+Gallery.propTypes = {
+  getListings: PropTypes.func.isRequired,
+  listings: PropTypes.array.isRequired
+};
+
+export default Gallery;

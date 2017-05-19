@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 import colorIcon from '../img/color-icon.png';
 import bwIcon from '../img/bw-icon.png';
-
-import React, { PropTypes } from 'react';
 
 const ColorIcon = ({ isColor }) => {
   if (isColor) {

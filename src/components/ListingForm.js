@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
@@ -12,21 +13,6 @@ import {
 import '../styles/ReactTags.css'
 
 class ListingForm extends React.Component {
-  static propTypes = {
-    handleAddLink: PropTypes.func.isRequired,
-    handleColorInput: PropTypes.func.isRequired,
-    handleDateChange: PropTypes.func.isRequired,
-    handleDeleteLink: PropTypes.func.isRequired,
-    handleInputChange: PropTypes.func.isRequired,
-    handlePosterChange: PropTypes.func.isRequired,
-    handleTagAddition: PropTypes.func.isRequired,
-    handleTagDelete: PropTypes.func.isRequired,
-    handleThumbnailChange: PropTypes.func.isRequired,
-    handleUrlChange: PropTypes.func.isRequired,
-    listing: PropTypes.object.isRequired,
-    postListing: PropTypes.func.isRequired
-  }
-
   isValid = () => {
     const { listing } = this.props;
     return (
@@ -266,6 +252,21 @@ class ListingForm extends React.Component {
       </form>
     );
   }
+}
+
+ListingForm.propTypes = {
+  handleAddLink: PropTypes.func.isRequired,
+  handleColorInput: PropTypes.func.isRequired,
+  handleDateChange: PropTypes.func.isRequired,
+  handleDeleteLink: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handlePosterChange: PropTypes.func.isRequired,
+  handleTagAddition: PropTypes.func.isRequired,
+  handleTagDelete: PropTypes.func.isRequired,
+  handleThumbnailChange: PropTypes.func.isRequired,
+  handleUrlChange: PropTypes.func.isRequired,
+  listing: PropTypes.object.isRequired,
+  postListing: PropTypes.func.isRequired
 }
 
 export default ListingForm;

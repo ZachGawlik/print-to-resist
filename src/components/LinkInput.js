@@ -1,14 +1,8 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import '../styles/LinkInput.css';
 
-export default class LinkInput extends React.Component {
-  static propTypes = {
-    index: PropTypes.number.isRequired,
-    onUrlChange: PropTypes.func.isRequired,
-    onDeleteLink: PropTypes.func.isRequired,
-    url: PropTypes.string.isRequired
-  };
-
+class LinkInput extends React.Component {
   handleUrlChange = (event) => {
     this.props.onUrlChange(this.props.index, event.target.value);
   }
@@ -36,3 +30,12 @@ export default class LinkInput extends React.Component {
     );
   }
 }
+
+LinkInput.propTypes = {
+  index: PropTypes.number.isRequired,
+  onUrlChange: PropTypes.func.isRequired,
+  onDeleteLink: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired
+};
+
+export default LinkInput;
