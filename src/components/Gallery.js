@@ -5,7 +5,9 @@ import '../styles/Gallery.css';
 
 class Gallery extends React.Component {
   componentDidMount() {
-    this.props.getListings();
+    if (!this.props.listings.length) {
+      this.props.getListings();
+    }
   }
 
   render() {
