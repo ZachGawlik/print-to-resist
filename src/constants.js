@@ -17,6 +17,6 @@ export const PAPER_SIZES = {
 };
 
 export const COLOR_OPTIONS = {
-  bw: 'bw',
-  color: 'color'
+  bw: 'Black and White',
+  color: 'Color'
 };

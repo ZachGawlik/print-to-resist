@@ -14,6 +14,7 @@
 .ListingTile__headline {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .ListingTile__title {
@@ -21,14 +22,9 @@
   font-size: larger;
 }
 
-.ListingTile__icon {
-  align-self: center;
-  width: 32px;
-  height: 32px;
-}
-
-.ListingTile__tag {
-  margin-right: .5em;
+.ListingTile__deadline {
+  color: grey;
+  margin: 0;
 }
 
 .ListingTile__tag--placeholder {

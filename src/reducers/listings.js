@@ -14,7 +14,7 @@ import listingsStatus from './listingsStatus';
 const initialState = {
   status: STATUS.UNINITIALIZED,
   entities: {},
-  visibleListings: []
+  allIds: []
 };
 
 function listings(state = initialState, action) {
@@ -43,7 +43,7 @@ function listings(state = initialState, action) {
           ...state.entities,
           ...normalizedData.entities.listings
         },
-        visibleListings: normalizedData.result
+        allIds: normalizedData.result
       };
     }
     default:

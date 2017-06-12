@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/ListingTile.css';
-import ColorIcon from './ColorIcon';
 import ListingLink from './ListingLink';
 import ListingThumbnail from './ListingThumbnail';
+import Tag from './Tag';
+import { getShortDate } from '../utils';
 
 class ListingTile extends React.Component {
   render() {
-    const { listing } = this.props;
+    const {
+      listing,
+      setTagFilter
+    } = this.props;
     return (
       <div className="ListingTile">
         <div className="ListingTile__card">
@@ -18,13 +22,15 @@ class ListingTile extends React.Component {
                   {listing.title}
                 </ListingLink>
               </p>
-              <ColorIcon isColor={listing.isColor} />
+              <p className="ListingTile__deadline">
+                {listing.deadline && getShortDate(listing.deadline)}
+              </p>
             </div>
             <div className="overflow-ellipsis">
               {listing.tags.length ?
-                listing.tags.map(tag => (
-                  <span className="ListingTile__tag" key={tag}>#{tag}</span>
-                )) :
+                listing.tags.map(tag =>
+                  <Tag key={tag} name={tag} onClick={setTagFilter} />
+                ) :
                 <span className="ListingTile__tag--placeholder">no tags</span>
               }
             </div>
@@ -42,7 +48,8 @@ class ListingTile extends React.Component {
 }
 
 ListingTile.propTypes = {
-  listing: PropTypes.object.isRequired
+  listing: PropTypes.object.isRequired,
+  setTagFilter: PropTypes.func
 };
 
 export default ListingTile;

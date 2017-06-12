@@ -14,7 +14,7 @@ body {
   max-width: 1000px;
 }
 
-input, textarea {
+input, textarea, select {
   border: 1px solid #ccc;
   padding: .5em .75em;
   font-size: 1em;
@@ -50,6 +50,11 @@ input[type="radio"] {
   margin-right: .5em;
 }
 
+input[type="checkbox"], input[type="radio"] {
+  height: 1em;
+  width: 1em;
+}
+
 .button_link {
   color: blue;
 }
@@ -66,7 +71,7 @@ input[type="radio"] {
 
 .overflow-ellipsis {
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
   text-overflow: ellipsis
 }
 
