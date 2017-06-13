@@ -15,6 +15,12 @@ const config = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
@@ -27,7 +33,7 @@ const config = {
             { loader: 'css-loader', options: { importLoaders: 1 } },
             {
               loader: 'postcss-loader',
-              options: { plugins: [ require('autoprefixer')() ]}
+              options: { plugins: [require('autoprefixer')()] }
             }
           ]
         })
@@ -54,6 +60,7 @@ const config = {
     contentBase: path.resolve(__dirname, './build'),
     historyApiFallback: true,
     inline: true,
+    overlay: { errors: true },
     port: 3000,
     proxy: {
       '/api': 'http://localhost:4000',
