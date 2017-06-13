@@ -15,7 +15,12 @@ const ListingDetail = ({
   <div className="ListingDetail">
     <div className="ListingDetail__info">
       <div className="ListingDetail__tile">
-        <ListingTile listing={listing} />
+        <ListingTile
+          deadline={listing.deadline}
+          tags={listing.tags}
+          thumbnailId={listing.thumbnailId}
+          title={listing.title}
+        />
       </div>
       <div className="ListingDetail__description">
         <h3>Description:</h3>

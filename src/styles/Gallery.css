@@ -1,6 +1,7 @@
 .Gallery__tile {
   display: inline-block;
   width: 75%;
+  padding: 10px;
 }
 
 @media (min-width: 555px) {

@@ -3,7 +3,35 @@
   max-width: 600px;
 }
 
+.ListingForm__preview-label {
+  margin-top: 0;
+}
+
 .ListingForm__preview {
+  width: 320px;
+  padding: 10px;
+  border: 1px dashed grey;
+  margin: 0 auto 2em;
+}
+
+@media (min-width: 992px) {
+  .ListingForm {
+    margin: 0;
+  }
+
+  .ListingForm__thumbnail {
+    display: none;
+  }
+
+  .ListingForm__preview {
+    margin: 0;
+    position: fixed;
+    top: 150px;
+    right: 50px;
+  }
+}
+
+.ListingForm__thumbnail {
   max-width: 200px;
   max-height: 200px;
 }
@@ -20,7 +48,7 @@
 
 .ListingForm__radio-label {
   display: block;
-  font-weight: normal
+  font-weight: normal;
 }
 
 .ListingForm__disclaimer {
@@ -37,7 +65,7 @@
 .ListingForm__dropzone {
   width: 200px;
   height: 200px;
-  border: 1px solid rgba(0,0,0,.15);
+  border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 5px;
   padding: 1em;
   cursor: pointer;

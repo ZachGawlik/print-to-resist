@@ -37,11 +37,11 @@ button:hover {
   background-color: #eee;
 }
 
-input[type="submit"]:enabled:hover {
+button:enabled:hover {
   background-color: #eee;
 }
 
-input[type="submit"]:disabled {
+button:disabled {
   border-color: #eee;
   cursor: not-allowed;
 }

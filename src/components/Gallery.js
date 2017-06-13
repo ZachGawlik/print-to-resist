@@ -32,7 +32,14 @@ class Gallery extends React.Component {
         <div>
           {listings.map(listing =>
             <div className="Gallery__tile" key={listing.listingId}>
-              <ListingTile listing={listing} setTagFilter={setTagFilter} />
+              <ListingTile
+                deadline={listing.deadline}
+                listingId={listing.listingId}
+                setTagFilter={setTagFilter}
+                tags={listing.tags}
+                thumbnailId={listing.thumbnailId}
+                title={listing.title}
+              />
             </div>
           )}
         </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Alert from '../components/Alert';
 import ListingForm from '../components/ListingForm';
+import ListingTile from '../components/ListingTile';
 import * as actionCreators from '../actions/listingFormActions';
 import { COLOR_OPTIONS, PAPER_SIZES, STATUS } from '../constants';
 import '../styles/ListingForm.css';
@@ -101,8 +102,36 @@ class ListingFormContainer extends React.Component {
     });
   };
 
+  isValid = () =>
+    !!this.state.description &&
+    !!this.state.poster &&
+    !!this.state.title &&
+    !!this.state.thumbnail;
+
+  handleSubmit = event => {
+    const data = new FormData();
+    Object.keys(this.state).forEach(field => {
+      if (field === 'tags') {
+        this.state.tags.forEach(tag => {
+          data.append(field, tag.id);
+        });
+      } else if (field === 'links') {
+        this.state.links.forEach(link => {
+          data.append(field, link);
+        });
+      } else {
+        data.append(field, this.state[field]);
+      }
+    });
+
+    if (this.isValid()) {
+      this.props.postListing(data);
+    }
+    event.preventDefault();
+  };
+
   render() {
-    const { postListing, status } = this.props;
+    const { status } = this.props;
     if (status === STATUS.SUCCESS) {
       return (
         <Alert type="success">
@@ -130,8 +159,21 @@ class ListingFormContainer extends React.Component {
           handleThumbnailChange={this.handleThumbnailChange}
           handleUrlChange={this.handleUrlChange}
           listing={this.state}
-          postListing={postListing}
         />
+        {this.state.thumbnail &&
+          <div className="ListingForm__preview">
+            <p className="ListingForm__preview-label">Preview</p>
+            <ListingTile
+              deadline={this.state.deadline && this.state.deadline.format()}
+              isLocalImage={true}
+              tags={this.state.tags.map(tag => tag.text)}
+              thumbnailId={this.state.thumbnail && this.state.thumbnail.preview}
+              title={this.state.title || 'Example'}
+            />
+          </div>}
+        <button onClick={this.handleSubmit} disabled={!this.isValid()}>
+          Submit
+        </button>
         {status === STATUS.PENDING && <p>Submitting...</p>}
       </div>
     );
