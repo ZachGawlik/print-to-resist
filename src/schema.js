@@ -6,4 +6,4 @@ export const listingSchema = new schema.Entity(
   { idAttribute: 'listingId' }
 );
 
-export const listingsSchema = [ listingSchema ];
+export const listingsSchema = [listingSchema];

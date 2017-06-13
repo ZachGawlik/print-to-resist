@@ -12,36 +12,35 @@ const getListingsRequest = () => ({
   type: GET_LISTINGS_REQUEST
 });
 
-const getListingsSuccess = (payload) => ({
+const getListingsSuccess = payload => ({
   type: GET_LISTINGS_SUCCESS,
   payload
 });
 
 const getListingsFailure = () => ({
   type: GET_LISTINGS_FAILURE
-})
+});
 
 export function getListings() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(getListingsRequest());
     return fetch(`${API_ROOT}/listings`)
-    .then(checkStatus)
-    .then(data => {
-      dispatch(getListingsSuccess(data));
-    })
-    .catch(err => {
-      dispatch(getListingsFailure());
-      console.log(err);
-    });
-  }
+      .then(checkStatus)
+      .then(data => {
+        dispatch(getListingsSuccess(data));
+      })
+      .catch(() => {
+        dispatch(getListingsFailure());
+      });
+  };
 }
 
-export const setColorFilter = (colorOption) => ({
+export const setColorFilter = colorOption => ({
   type: SET_COLOR_FILTER,
   payload: colorOption
 });
 
-export const setTagFilter = (tag) => ({
+export const setTagFilter = tag => ({
   type: SET_TAG_FILTER,
   payload: tag
 });

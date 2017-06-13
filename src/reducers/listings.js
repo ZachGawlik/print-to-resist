@@ -1,7 +1,5 @@
 import { normalize } from 'normalizr';
-import {
-  GET_LISTING_SUCCESS
-} from '../actions/listingDetailActions';
+import { GET_LISTING_SUCCESS } from '../actions/listingDetailActions';
 import {
   GET_LISTINGS_REQUEST,
   GET_LISTINGS_SUCCESS,
@@ -33,7 +31,7 @@ function listings(state = initialState, action) {
           ...state.entities,
           ...normalizedData.entities.listings
         }
-      }
+      };
     }
     case GET_LISTINGS_SUCCESS: {
       const normalizedData = normalize(action.payload, listingsSchema);

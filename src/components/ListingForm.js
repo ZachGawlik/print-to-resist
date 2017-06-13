@@ -6,11 +6,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { WithContext as ReactTags } from 'react-tag-input';
 import LinkInput from './LinkInput';
-import {
-  COLOR_OPTIONS,
-  PAPER_SIZES
-} from '../constants';
-import '../styles/ReactTags.css'
+import { COLOR_OPTIONS, PAPER_SIZES } from '../constants';
+import '../styles/ReactTags.css';
 
 class ListingForm extends React.Component {
   isValid = () => {
@@ -21,30 +18,30 @@ class ListingForm extends React.Component {
       !!listing.title &&
       !!listing.thumbnail
     );
-  }
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     const { listing } = this.props;
     const data = new FormData();
-    Object.keys(listing).forEach((field) => {
+    Object.keys(listing).forEach(field => {
       if (field === 'tags') {
         listing.tags.forEach(tag => {
           data.append(field, tag.id);
-        })
+        });
       } else if (field === 'links') {
         listing.links.forEach(link => {
-          data.append(field, link)
+          data.append(field, link);
         });
       } else {
         data.append(field, listing[field]);
       }
-    })
+    });
 
     if (this.isValid()) {
       this.props.postListing(data);
     }
     event.preventDefault();
-  }
+  };
 
   render() {
     const { listing } = this.props;
@@ -52,16 +49,18 @@ class ListingForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <h2>Submit a poster worth spreading</h2>
         <p className="ListingForm__disclaimer">
-          The submission will be reviewed to ensure the poster is accurate and relevant.
-          If the poster pertains to a specific event, the organizer will be contacted to ensure that they agree to having the event be spread in this way.
+          The submission will be reviewed to ensure the poster is accurate and
+          relevant.
+          If the poster pertains to a specific event, the organizer will be
+          contacted to ensure that they agree to having the event be spread in
+          this way.
         </p>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="thumbnail-input"
-          >
+          <label className="ListingForm__field-label" htmlFor="thumbnail-input">
             Thumbnail:
-            <span className="ListingForm__input-info">(preferably 300x300)</span>
+            <span className="ListingForm__input-info">
+              (preferably 300x300)
+            </span>
           </label>
           <div>
             {listing.thumbnail &&
@@ -69,12 +68,11 @@ class ListingForm extends React.Component {
                 alt="thumbnail"
                 className="ListingForm__preview"
                 src={listing.thumbnail.preview}
-              />
-            }
+              />}
             <Dropzone
               accept="image/jpeg, image/png"
               className="ListingForm__dropzone"
-              inputProps={{id: 'thumbnail-input'}}
+              inputProps={{ id: 'thumbnail-input' }}
               multiple={false}
               onDropAccepted={this.props.handleThumbnailChange}
             >
@@ -83,10 +81,7 @@ class ListingForm extends React.Component {
           </div>
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="title-input"
-          >
+          <label className="ListingForm__field-label" htmlFor="title-input">
             Title:
           </label>
           <input
@@ -97,20 +92,18 @@ class ListingForm extends React.Component {
           />
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="poster-input"
-          >
+          <label className="ListingForm__field-label" htmlFor="poster-input">
             Poster:
-            <span className="ListingForm__input-info">(must be less than 10MB)</span>
+            <span className="ListingForm__input-info">
+              (must be less than 10MB)
+            </span>
           </label>
-          {listing.poster &&
-            listing.poster.name}
+          {listing.poster && listing.poster.name}
           <Dropzone
             accept="image/jpeg, image/png, application/pdf"
             className="ListingForm__dropzone"
             disablePreview={true}
-            inputProps={{id: 'poster-input'}}
+            inputProps={{ id: 'poster-input' }}
             multiple={false}
             onDropAccepted={this.props.handlePosterChange}
           >
@@ -118,10 +111,7 @@ class ListingForm extends React.Component {
           </Dropzone>
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="description"
-          >
+          <label className="ListingForm__field-label" htmlFor="description">
             Description
           </label>
           <textarea
@@ -132,12 +122,11 @@ class ListingForm extends React.Component {
           />
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="instruction"
-          >
+          <label className="ListingForm__field-label" htmlFor="instruction">
             Special instruction:
-            <span className="ListingForm__input-info">Where/how should this be spread?</span>
+            <span className="ListingForm__input-info">
+              Where/how should this be spread?
+            </span>
           </label>
           <textarea
             id="instruction"
@@ -147,17 +136,16 @@ class ListingForm extends React.Component {
           />
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="tags"
-          >
+          <label className="ListingForm__field-label" htmlFor="tags">
             Tags
             <span className="ListingForm__input-info">(up to 3)</span>
           </label>
           <ReactTags
             autofocus={false}
             classNames={{
-              tagInput: listing.tags.length >= 3 ? 'display-none' : 'ReactTags__tagInput'
+              tagInput: listing.tags.length >= 3
+                ? 'display-none'
+                : 'ReactTags__tagInput'
             }}
             handleAddition={this.props.handleTagAddition}
             handleDelete={this.props.handleTagDelete}
@@ -173,32 +161,26 @@ class ListingForm extends React.Component {
           </label>
           {listing.links.map((link, index) =>
             <LinkInput
-              key={index}
+              key={link}
               index={index}
               onDeleteLink={this.props.handleDeleteLink}
               onUrlChange={this.props.handleUrlChange}
               url={link}
             />
           )}
-          <button
-            onClick={this.props.handleAddLink}
-            type="button"
-          >
+          <button onClick={this.props.handleAddLink} type="button">
             Add +
           </button>
         </div>
         <div className="ListingForm__field">
-          <label
-            className="ListingForm__field-label"
-            htmlFor="deadline"
-          >
+          <label className="ListingForm__field-label" htmlFor="deadline">
             Deadline
             <span className="ListingForm__input-info">(if applicable)</span>
           </label>
           <DatePicker
             isClearable={true}
             minDate={moment()}
-            maxDate={moment().add(1, "year")}
+            maxDate={moment().add(1, 'year')}
             onChange={this.props.handleDateChange}
             placeholderText="No deadline selected"
             selected={listing.deadline}
@@ -267,6 +249,6 @@ ListingForm.propTypes = {
   handleUrlChange: PropTypes.func.isRequired,
   listing: PropTypes.object.isRequired,
   postListing: PropTypes.func.isRequired
-}
+};
 
 export default ListingForm;

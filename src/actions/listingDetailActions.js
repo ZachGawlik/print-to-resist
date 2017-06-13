@@ -9,45 +9,37 @@ const getListingRequest = () => ({
   type: GET_LISTING_REQUEST
 });
 
-const getListingSuccess = (payload) => ({
+const getListingSuccess = payload => ({
   type: GET_LISTING_SUCCESS,
   payload
 });
 
 const getListingFailure = () => ({
   type: GET_LISTING_FAILURE
-})
+});
 
 export function getListing(listingId) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(getListingRequest());
     return fetch(`${API_ROOT}/listings/${listingId}`)
-    .then(checkStatus)
-    .then(data => {
-      dispatch(getListingSuccess(data));
-    })
-    .catch(err => {
-      dispatch(getListingFailure());
-    });
-  }
+      .then(checkStatus)
+      .then(data => {
+        dispatch(getListingSuccess(data));
+      })
+      .catch(() => {
+        dispatch(getListingFailure());
+      });
+  };
 }
 
 export function addPrinting(listingId, formData) {
-  return (dispatch) => {
-    return fetch(`${API_ROOT}/listings/${listingId}/printings`, {
+  return () =>
+    fetch(`${API_ROOT}/listings/${listingId}/printings`, {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
-    })
-    .then(checkStatus)
-    .then(response => {
-      console.log('success');
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
+    }).then(checkStatus);
 }

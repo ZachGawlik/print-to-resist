@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import '../styles/Tag.css';
 
 class Tag extends React.Component {
-  _onClick = () => {
+  handleOnClick = () => {
     this.props.onClick(this.props.name);
-  }
+  };
 
   render() {
     if (this.props.onClick) {
       return (
-        <span className="Tag Tag--clickable" onClick={this._onClick}>
+        <button className="Tag Tag--clickable" onClick={this.handleOnClick}>
           {this.props.name}
-        </span>
+        </button>
       );
     }
     return <span className="Tag">{this.props.name}</span>;

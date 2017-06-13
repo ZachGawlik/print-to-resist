@@ -20,26 +20,24 @@ class ListingDetailContainer extends React.Component {
     }
   }
 
-  handleCopiesChange = (event) => {
+  handleCopiesChange = event => {
     this.setState({ copies: event.target.value });
-  }
+  };
 
   handlePrinting = () => {
     const { copies } = this.state;
     this.setState({ isPrintInputOpen: false });
-    this.props.addPrinting(
-      this.props.listing.listingId,
-      { copies }
-    );
-  }
+    this.props.addPrinting(this.props.listing.listingId, { copies });
+  };
 
   openPrintInput = () => {
     this.setState({ isPrintInputOpen: true });
-  }
+  };
 
   render() {
     const { listing } = this.props;
-    return listing && (
+    return (
+      listing &&
       <ListingDetail
         isPrintInputOpen={this.state.isPrintInputOpen}
         listing={listing}
@@ -63,12 +61,9 @@ const mapStateToProps = (state, ownProps) => ({
   status: state.listings.status
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
-  actionCreators,
-  dispatch
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actionCreators, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListingDetailContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ListingDetailContainer
+);

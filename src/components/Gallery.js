@@ -30,11 +30,11 @@ class Gallery extends React.Component {
           toggleActiveOnly={toggleActiveOnly}
         />
         <div>
-          {listings.map(listing => (
+          {listings.map(listing =>
             <div className="Gallery__tile" key={listing.listingId}>
               <ListingTile listing={listing} setTagFilter={setTagFilter} />
             </div>
-          ))}
+          )}
         </div>
       </div>
     );

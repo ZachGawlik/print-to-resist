@@ -3,13 +3,13 @@ import React from 'react';
 import '../styles/LinkInput.css';
 
 class LinkInput extends React.Component {
-  handleUrlChange = (event) => {
+  handleUrlChange = event => {
     this.props.onUrlChange(this.props.index, event.target.value);
-  }
+  };
 
   handleDeleteClick = () => {
-    this.props.onDeleteLink(this.props.index)
-  }
+    this.props.onDeleteLink(this.props.index);
+  };
 
   render() {
     return (

@@ -5,11 +5,7 @@ import { bindActionCreators } from 'redux';
 import Alert from '../components/Alert';
 import ListingForm from '../components/ListingForm';
 import * as actionCreators from '../actions/listingFormActions';
-import {
-  COLOR_OPTIONS,
-  PAPER_SIZES,
-  STATUS
-} from '../constants';
+import { COLOR_OPTIONS, PAPER_SIZES, STATUS } from '../constants';
 import '../styles/ListingForm.css';
 
 class ListingFormContainer extends React.Component {
@@ -18,7 +14,7 @@ class ListingFormContainer extends React.Component {
     this.state = {
       deadline: null,
       description: '',
-      instruction:'',
+      instruction: '',
       isColor: false,
       links: [],
       paperSize: PAPER_SIZES.letter,
@@ -29,37 +25,37 @@ class ListingFormContainer extends React.Component {
     };
   }
 
-  handleDateChange = (newDate) => {
+  handleDateChange = newDate => {
     this.setState({
       deadline: newDate
     });
-  }
+  };
 
-  handleInputChange = (event) => {
+  handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  handleThumbnailChange = (acceptedFiles) => {
+  handleThumbnailChange = acceptedFiles => {
     this.setState({
       thumbnail: acceptedFiles[0]
     });
-  }
+  };
 
-  handlePosterChange = (acceptedFiles) => {
+  handlePosterChange = acceptedFiles => {
     this.setState({
       poster: acceptedFiles[0]
     });
-  }
+  };
 
-  handleColorInput = (event) => {
+  handleColorInput = event => {
     this.setState({
       isColor: event.target.value === COLOR_OPTIONS.color
     });
-  }
+  };
 
-  handleTagAddition = (tag) => {
+  handleTagAddition = tag => {
     this.setState({
       tags: [
         ...this.state.tags,
@@ -69,25 +65,22 @@ class ListingFormContainer extends React.Component {
         }
       ]
     });
-  }
+  };
 
-  handleTagDelete = (index) => {
+  handleTagDelete = index => {
     this.setState({
       tags: [
         ...this.state.tags.slice(0, index),
         ...this.state.tags.slice(index + 1)
       ]
     });
-  }
+  };
 
   handleAddLink = () => {
     this.setState({
-      links: [
-        ...this.state.links,
-        ''
-      ]
+      links: [...this.state.links, '']
     });
-  }
+  };
 
   handleUrlChange = (index, url) => {
     this.setState({
@@ -97,16 +90,16 @@ class ListingFormContainer extends React.Component {
         ...this.state.links.slice(index + 1)
       ]
     });
-  }
+  };
 
-  handleDeleteLink = (index) => {
+  handleDeleteLink = index => {
     this.setState({
       links: [
         ...this.state.links.slice(0, index),
         ...this.state.links.slice(index + 1)
       ]
     });
-  }
+  };
 
   render() {
     const { postListing, status } = this.props;
@@ -114,7 +107,8 @@ class ListingFormContainer extends React.Component {
       return (
         <Alert type="success">
           Your poster {this.state.title} has been submitted for approval!
-          Assuming it is approved, you can expect to see it in the gallery within 48 hours for people around the country to start spreading.
+          Assuming it is approved, you can expect to see it in the gallery
+          within 48 hours for people around the country to start spreading.
         </Alert>
       );
     }
@@ -123,8 +117,7 @@ class ListingFormContainer extends React.Component {
         {status === STATUS.FAILURE &&
           <Alert type="error">
             An error has occurred with your submission
-          </Alert>
-        }
+          </Alert>}
         <ListingForm
           handleAddLink={this.handleAddLink}
           handleColorInput={this.handleColorInput}
@@ -139,9 +132,7 @@ class ListingFormContainer extends React.Component {
           listing={this.state}
           postListing={postListing}
         />
-        {status === STATUS.PENDING &&
-          <p>Submitting...</p>
-        }
+        {status === STATUS.PENDING && <p>Submitting...</p>}
       </div>
     );
   }
@@ -152,14 +143,12 @@ ListingFormContainer.propTypes = {
   status: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   status: state.listingFormStatus
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
-  actionCreators,
-  dispatch
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actionCreators, dispatch);
 
 const ConnectedListingFormContainer = connect(
   mapStateToProps,

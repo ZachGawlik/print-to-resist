@@ -15,23 +15,21 @@ const postListingSuccess = () => ({
 
 const postListingFailure = () => ({
   type: POST_LISTING_FAILURE
-})
+});
 
 export function postListing(formData) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(postListingRequest());
     return fetch(`${API_ROOT}/listings`, {
       method: 'POST',
       body: formData
     })
-    .then(checkStatus)
-    .then(response => {
-      dispatch(postListingSuccess())
-      console.log('success');
-    })
-    .catch(err => {
-      dispatch(postListingFailure());
-      console.log(err);
-    });
-  }
+      .then(checkStatus)
+      .then(() => {
+        dispatch(postListingSuccess());
+      })
+      .catch(() => {
+        dispatch(postListingFailure());
+      });
+  };
 }
