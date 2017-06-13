@@ -47,7 +47,8 @@ const config = {
       inject: true,
       template: 'public/index.html'
     }),
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new webpack.ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(en)$/)
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './build'),
