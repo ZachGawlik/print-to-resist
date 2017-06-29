@@ -8,4 +8,8 @@ React, Redux front end for Print to Resist. Also see the [back end source](https
 2. Run `yarn` or `npm install` to install the project’s dependencies.
 3. Run `npm start` to run the development webpack server. Visit it at `localhost:3000`.
 
-By default, the front end dev server will run on port 3000. It will proxy all API requests to port 4000 where the back end server runs locally.
+By default, the front end dev server will run on port 3000. It will proxy all API requests to port 4000 where the [back end](https://github.com/zachgawlik/print-to-resist-backend) server runs locally.
+
+## Tests
+
+Jest tests for the async actions, reducers, utils, and components can be run with `npm test`.
