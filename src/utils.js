@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response.json();
@@ -6,6 +8,5 @@ export function checkStatus(response) {
 }
 
 export function getShortDate(dateString) {
-  const d = new Date(dateString);
-  return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear() % 100}`;
+  return moment(dateString).format('MM/DD/YY');
 }
