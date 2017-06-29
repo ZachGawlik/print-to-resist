@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import createHistory from 'history/createBrowserHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';

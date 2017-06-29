@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 import { API_ROOT } from '../constants';
 import { checkStatus } from '../utils';
 
