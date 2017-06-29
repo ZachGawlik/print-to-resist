@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingTile renders as expected 1`] = `
+<div
+  className="ListingTile"
+>
+  <div
+    className="ListingTile__content"
+  >
+    <div
+      className="ListingTile__headline"
+    >
+      <p
+        className="ListingTile__title overflow-ellipsis"
+      >
+        Upcoming Town Halls
+      </p>
+      <p
+        className="ListingTile__deadline"
+      />
+    </div>
+    <div
+      className="overflow-ellipsis"
+    >
+      <span
+        className="ListingTile__tag--placeholder"
+      >
+        no tags
+      </span>
+    </div>
+  </div>
+  <div
+    className="ListingTile__image-wrapper"
+  >
+    <img
+      alt=""
+      className="ListingTile__image"
+      src="http://localhost:3000/image/testImageId"
+    />
+  </div>
+</div>
+`;

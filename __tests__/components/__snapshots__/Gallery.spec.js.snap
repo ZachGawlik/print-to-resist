@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gallery renders as expected 1`] = `
+<div
+  className="Gallery"
+  id="gallery"
+>
+  <h2>
+    Spread the word!
+  </h2>
+  <p>
+    Select a page to post around your city
+  </p>
+  <FilterBar
+    galleryFilters={
+      Object {
+        "activeOnly": false,
+        "colorOption": "",
+        "tag": null,
+      }
+    }
+    setColorFilter={[Function]}
+    setTagFilter={[Function]}
+    toggleActiveOnly={[Function]}
+  />
+  <div>
+    <div
+      className="Gallery__tile"
+    >
+      <ListingTile
+        deadline="2017-06-01T04:00:00.000Z"
+        listingId={97}
+        setTagFilter={[Function]}
+        tags={
+          Array [
+            "nyc",
+            "town hall",
+          ]
+        }
+        thumbnailId="c0c51fba8b26122d2c368abbfd5da8b6.png"
+        title="NYC Congress Town Halls"
+      />
+    </div>
+  </div>
+</div>
+`;

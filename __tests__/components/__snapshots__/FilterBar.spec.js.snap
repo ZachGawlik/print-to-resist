@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterBar renders as expected 1`] = `
+<div>
+  <ul>
+    <li>
+      <label>
+        Show only upcoming events 
+         
+        <input
+          checked={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </label>
+    </li>
+    <li>
+      <label>
+        To be printed in: 
+         
+        <select
+          onChange={[Function]}
+          value=""
+        >
+          <option
+            value=""
+          >
+            All
+          </option>
+          <option
+            value="Color"
+          >
+            Color
+          </option>
+          <option
+            value="Black and White"
+          >
+            Black and White
+          </option>
+        </select>
+      </label>
+    </li>
+  </ul>
+  <p>
+    Showing 
+    all
+    
+  </p>
+</div>
+`;

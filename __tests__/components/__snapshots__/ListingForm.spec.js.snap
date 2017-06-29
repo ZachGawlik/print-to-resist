@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingForm renders as expected 1`] = `
+<div>
+  <h2>
+    Submit a poster worth spreading
+  </h2>
+  <p
+    className="ListingForm__disclaimer"
+  >
+    The submission will be reviewed to ensure the poster is accurate and relevant. If the poster pertains to a specific event, the organizer will be contacted to ensure that they agree to having the event be spread in this way.
+  </p>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="thumbnail-input"
+    >
+      Thumbnail:
+      <span
+        className="ListingForm__input-info"
+      >
+        (preferably 300x300)
+      </span>
+    </label>
+    <div>
+      <Dropzone
+        accept="image/jpeg, image/png"
+        className="ListingForm__dropzone"
+        disableClick={false}
+        disablePreview={false}
+        inputProps={
+          Object {
+            "id": "thumbnail-input",
+          }
+        }
+        maxSize={Infinity}
+        minSize={0}
+        multiple={false}
+        onDropAccepted={[Function]}
+        preventDropOnDocument={true}
+      >
+        Add your thumbnail
+      </Dropzone>
+    </div>
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="title-input"
+    >
+      Title:
+    </label>
+    <input
+      id="title-input"
+      name="title"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="poster-input"
+    >
+      Poster:
+      <span
+        className="ListingForm__input-info"
+      >
+        (must be less than 10MB)
+      </span>
+    </label>
+    <Dropzone
+      accept="image/jpeg, image/png, application/pdf"
+      className="ListingForm__dropzone"
+      disableClick={false}
+      disablePreview={true}
+      inputProps={
+        Object {
+          "id": "poster-input",
+        }
+      }
+      maxSize={Infinity}
+      minSize={0}
+      multiple={false}
+      onDropAccepted={[Function]}
+      preventDropOnDocument={true}
+    >
+      Add your poster
+    </Dropzone>
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="description"
+    >
+      Description
+    </label>
+    <textarea
+      id="description"
+      name="description"
+      onChange={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="instruction"
+    >
+      Special instruction:
+      <span
+        className="ListingForm__input-info"
+      >
+        Where/how should this be spread?
+      </span>
+    </label>
+    <textarea
+      id="instruction"
+      name="instruction"
+      onChange={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="tags"
+    >
+      Tags
+      <span
+        className="ListingForm__input-info"
+      >
+        (up to 3)
+      </span>
+    </label>
+    <DragDropContext(ReactTags)
+      autofocus={false}
+      classNames={
+        Object {
+          "tagInput": "ReactTags__tagInput",
+        }
+      }
+      handleAddition={[Function]}
+      handleDelete={[Function]}
+      id="tags"
+      minQueryLength={1}
+      name="tags"
+      tags={Array []}
+    />
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+    >
+      Links
+    </label>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Add +
+    </button>
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <label
+      className="ListingForm__field-label"
+      htmlFor="deadline"
+    >
+      Deadline
+      <span
+        className="ListingForm__input-info"
+      >
+        (if applicable)
+      </span>
+    </label>
+    <t
+      dateFormat="L"
+      dateFormatCalendar="MMMM YYYY"
+      disabled={false}
+      disabledKeyboardNavigation={false}
+      dropdownMode="scroll"
+      isClearable={true}
+      maxDate={"2017-12-21T23:36:07.071Z"}
+      minDate={"2016-12-21T23:36:07.071Z"}
+      monthsShown={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClickOutside={[Function]}
+      onFocus={[Function]}
+      onMonthChange={[Function]}
+      onSelect={[Function]}
+      placeholderText="No deadline selected"
+      popoverAttachment="top left"
+      popoverTargetAttachment="bottom left"
+      popoverTargetOffset="10px 0"
+      selected={null}
+      tetherConstraints={
+        Array [
+          Object {
+            "attachment": "together",
+            "to": "window",
+          },
+        ]
+      }
+      utcOffset={-300}
+      withPortal={false}
+    />
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <p
+      className="ListingForm__field-label"
+    >
+      Print in:
+    </p>
+    <label
+      className="ListingForm__radio-label"
+    >
+      <input
+        checked={true}
+        name="isColor"
+        onChange={[Function]}
+        type="radio"
+        value="Black and White"
+      />
+      B/W
+    </label>
+    <label
+      className="ListingForm__radio-label"
+    >
+      <input
+        checked={false}
+        name="isColor"
+        onChange={[Function]}
+        type="radio"
+        value="Color"
+      />
+      <span
+        className="colorful"
+      >
+        Color
+      </span>
+    </label>
+  </div>
+  <div
+    className="ListingForm__field"
+  >
+    <p
+      className="ListingForm__field-label"
+    >
+      Page size
+    </p>
+    <label
+      className="ListingForm__radio-label"
+    >
+      <input
+        checked={true}
+        name="paperSize"
+        onChange={[Function]}
+        type="radio"
+        value="Letter"
+      />
+      Letter
+    </label>
+    <label
+      className="ListingForm__radio-label"
+    >
+      <input
+        checked={false}
+        name="paperSize"
+        onChange={[Function]}
+        type="radio"
+        value="Tabloid"
+      />
+      Tabloid (17 x 11)
+    </label>
+  </div>
+</div>
+`;

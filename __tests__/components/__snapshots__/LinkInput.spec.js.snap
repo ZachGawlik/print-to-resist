@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkInput renders as expected 1`] = `
+<div
+  className="LinkInput"
+>
+  <input
+    onChange={[Function]}
+    type="url"
+    value="google.com"
+  />
+  <button
+    className="LinkInput__remove"
+    onClick={[Function]}
+    type="button"
+  >
+    -
+  </button>
+</div>
+`;

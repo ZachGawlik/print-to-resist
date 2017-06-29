@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag renders clickable tag 1`] = `
+<button
+  className="Tag Tag--clickable"
+  onClick={[Function]}
+>
+  test
+</button>
+`;
+
+exports[`Tag renders unclickable tag 1`] = `
+<span
+  className="Tag"
+>
+  test
+</span>
+`;

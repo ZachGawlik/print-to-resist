@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders error as expected 1`] = `
+<div
+  className="Alert Alert--error"
+>
+  Bad thing!
+</div>
+`;
+
+exports[`Alert renders success as expected 1`] = `
+<div
+  className="Alert Alert--success"
+>
+  Good thing!
+</div>
+`;

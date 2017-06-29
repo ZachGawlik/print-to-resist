@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingLink renders as expected 1`] = `
+<Link
+  className="ListingLink"
+  replace={false}
+  to="/poster/5"
+>
+  Go to listing
+</Link>
+`;

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingDetail renders as expected 1`] = `
+<div
+  className="ListingDetail"
+>
+  <div
+    className="ListingDetail__info"
+  >
+    <div
+      className="ListingDetail__tile"
+    >
+      <ListingTile
+        deadline="2017-06-01T04:00:00.000Z"
+        tags={
+          Array [
+            "nyc",
+            "town hall",
+          ]
+        }
+        thumbnailId="c0c51fba8b26122d2c368abbfd5da8b6.png"
+        title="NYC Congress Town Halls"
+      />
+    </div>
+    <div
+      className="ListingDetail__description"
+    >
+      <h3>
+        Description:
+      </h3>
+      <p>
+        Upcoming dates for NYC congress town halls
+      </p>
+    </div>
+  </div>
+  <div
+    className="ListingDetail__files"
+  >
+    <h3
+      className="ListingDetail__files-header"
+    >
+      Poster files:
+    </h3>
+    <ul>
+      <li
+        className="ListingDetail__files-link"
+      >
+        <a
+          href="http://localhost:3000/image/c0753ac7045056c7f73779a80db8ae55.png"
+          target="_blank"
+        >
+          Poster 
+          1
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>
+      Ready to print?
+    </h3>
+    <p>
+      Open up the poster's file(s) above, and print them as you would anything else.
+    </p>
+    <p>
+      Remember to print them in
+       
+      <strong>
+        black and white
+      </strong>
+      , using 
+      <strong>
+        Letter
+      </strong>
+       sized paper.
+    </p>
+    <p>
+      Once printed, take your posters and stroll around town! If it's a traditional poster, grab a roll of tape. If it's more suited for takeaway informational flyers, leave them in key places.
+    </p>
+    
+    <div>
+      <p>
+        Let them know the word is being spread
+      </p>
+      <label>
+        Copies:
+        <input
+          max="200"
+          min="1"
+          onChange={[Function]}
+          type="number"
+        />
+      </label>
+      <button
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
